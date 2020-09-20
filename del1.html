@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="del1c.css">
+			<title>forty shades of gray</title>
+			<h1>The COUNTING GAME</h1>
+			<h2>Click the numbers orderly and quickly</h2>
+		</head>
+		
+		<body >
+			<span id="timer"></span>
+
+			<span class="time">time:</span>
+			
+			<div class="gridd">
+				<div class="nith">
+					<div id='1' onclick="myfunc(1)"></div>
+					<div id= '2' onclick="myfunc(2)"></div>
+					<div id='3' onclick="myfunc(3)"></div>
+					<div id='4' onclick="myfunc(4)"></div>
+					<div id='5' onclick="myfunc(5)"></div>
+					<div id="6" onclick="myfunc(6)"></div>
+					<div id="7" onclick="myfunc(7)"></div>
+					<div id="8" onclick="myfunc(8)"></div>
+					<div id="9" onclick="myfunc(9)"></div>
+					<div id="10" onclick="myfunc(10)"></div>
+					<div id="11" onclick="myfunc(11)"></div>
+					<div id="12" onclick="myfunc(12)"></div>
+					<div id="13" onclick="myfunc(13)"></div>
+					<div id="14" onclick="myfunc(14)"></div>
+					<div id="15" onclick="myfunc(15)"></div>
+					<div id="16" onclick="myfunc(16)"></div>
+					<div id="17" onclick="myfunc(17)"></div>
+					<div id="18" onclick="myfunc(18)"></div>
+					<div id="19" onclick="myfunc(19)"></div>
+					<div id="20" onclick="myfunc(20)"></div>
+					<div id="21" onclick="myfunc(21)"></div>
+					<div id="22" onclick="myfunc(22)"></div>
+					<div id="23" onclick="myfunc(23)"></div>
+					<div id="24" onclick="myfunc(24)"></div>
+					<div id="25" onclick="myfunc(25)"></div>
+				</div>
+			</div>
+			
+<button type="button" onclick="disp(); time(); " class="butt" >Start
+	<hr style="height:2px;border-width:0;color:black;background-color:gray">
+</button>
+			
+<button type="button" onclick="coll() " class="but" >High Scores
+	<hr style="height:2px;border-width:0;color:black;background-color:gray">
+	<div id="101"></div>
+	<div id="102"></div>
+	<div id="103"></div>
+	<div id="104"></div>
+	<div id="105"></div>
+</button>
+
+<button type="reset" class ="but" onclick="restart()" value="reset">Restart</button>
+
+<script>
+
+
+	
+	
+
+
+
+
+
+
+	var randomnum = function(min,max){
+	var step1 = max - min +1;
+	var step2 = Math.random() * step1;
+	var result = Math.floor(step2) + min;
+	return result;
+	
+    
+	 };
+function createarray(start,end){
+
+	var myarray=[];
+	 for ( var i= start ; i<= end; i++){
+	 	myarray.push(i);
+	 }
+	 return myarray;
+}	 
+ 
+var numberarray = createarray(1,25);
+var numarray= createarray(26,50);
+
+
+	
+	
+
+
+
+
+console.log(randomnum());
+
+function disp(){
+
+for(var i=1; i<26; i++){
+	
+	var randomindex= randomnum(0,numberarray.length-1);
+	var randomnumber= numberarray[randomindex];
+	numberarray.splice(randomindex,1);
+	
+	
+	document.getElementById(i).innerHTML=randomnumber;
+	if(randomnumber===undefined){
+	document.getElementById(i).innerHTML= "";
+}
+
+	
+
+
+}
+
+
+}
+
+var x=1;
+function myfunc(a){
+	if(x==document.getElementById(a).innerHTML){
+		var randomindex= randomnum(0,numarray.length-1);
+	var randomnumber= numarray[randomindex];
+	numarray.splice(randomindex,1);
+
+
+
+	
+	
+	document.getElementById(a).innerHTML= randomnumber;
+
+
+if(randomnumber===undefined){
+	document.getElementById(a).innerHTML= "";
+}
+
+	if(randomnumber==50){
+		document.getElementById(a).onlclick=function(){myStopFunction()};
+	}
+
+	x++;
+
+	
+}
+
+	
+
+											
+												
+
+
+}
+
+											
+
+
+
+
+
+
+										
+
+
+function time(){
+	var startTime = Date.now();
+
+
+var interval = setInterval(function() {
+    var elapsedTime = Date.now() - startTime;
+    document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(3);
+}, 100);
+
+
+}
+
+
+var t;
+
+
+function myStopFunction(){
+	clearInterval(interval);
+}
+
+
+function coll(){
+var colors = ["red","blue","green"];
+localStorage.setItem("my_colors", JSON.stringify(colors)); //store colors
+var storedColors = JSON.parse(localStorage.getItem("my_colors"));
+
+ 	document.getElementById(101).innerHTML=storedColors[0];
+
+ 	document.getElementById(102).innerHTML=storedColors[1];
+
+ 	document.getElementById(103).innerHTML=storedColors[2];
+
+ 	document.getElementById(104).innerHTML=storedColors[2];
+
+ 	document.getElementById(105).innerHTML=storedColors[1];
+}
+
+function restart(){
+	document.location.href= " ";
+
+}
+
+
+
+	
+
+ 
+
+
+
+
+				</script>
+			</body>
+		</html>
